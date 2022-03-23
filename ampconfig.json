@@ -1,0 +1,19 @@
+{
+  "dataServiceGeneratorVersion": "0.12.1",
+  "appInfo": {
+    "name": "My app",
+    "description": "",
+    "version": "a0qxza1d",
+    "id": "cl13irn2286237801s6gct0xnyw",
+    "url": "https://app.amplication.com/cl13irn2286237801s6gct0xnyw",
+    "settings": {
+      "dbHost": "localhost",
+      "dbName": "",
+      "dbPassword": "admin",
+      "dbPort": 5432,
+      "dbUser": "admin",
+      "appId": "cl13irn2286237801s6gct0xnyw",
+      "authProvider": "Jwt"
+    }
+  }
+}
