@@ -15,6 +15,7 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
+import { ProjectListRelationFilter } from "../../project/base/ProjectListRelationFilter";
 import { TaskListRelationFilter } from "../../task/base/TaskListRelationFilter";
 @InputType()
 class UserWhereInput {
@@ -50,6 +51,18 @@ class UserWhereInput {
     nullable: true,
   })
   lastName?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => ProjectListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => ProjectListRelationFilter)
+  @IsOptional()
+  @Field(() => ProjectListRelationFilter, {
+    nullable: true,
+  })
+  projects?: ProjectListRelationFilter;
 
   @ApiProperty({
     required: false,

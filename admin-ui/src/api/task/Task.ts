@@ -1,3 +1,4 @@
+import { Project } from "../project/Project";
 import { User } from "../user/User";
 
 export type Task = {
@@ -6,6 +7,7 @@ export type Task = {
   createdAt: Date;
   id: string;
   name: string | null;
+  projects?: Array<Project>;
   status?: "Option1" | null;
   updatedAt: Date;
   user?: Array<User>;

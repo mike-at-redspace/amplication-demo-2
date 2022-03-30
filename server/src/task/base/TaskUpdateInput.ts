@@ -16,10 +16,11 @@ import {
   IsOptional,
   IsDate,
   IsString,
-  IsEnum,
   ValidateNested,
+  IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { ProjectUpdateManyWithoutTasksInput } from "./ProjectUpdateManyWithoutTasksInput";
 import { EnumTaskStatus } from "./EnumTaskStatus";
 import { UserUpdateManyWithoutTasksInput } from "./UserUpdateManyWithoutTasksInput";
 @InputType()
@@ -56,6 +57,18 @@ class TaskUpdateInput {
     nullable: true,
   })
   name?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => ProjectUpdateManyWithoutTasksInput,
+  })
+  @ValidateNested()
+  @Type(() => ProjectUpdateManyWithoutTasksInput)
+  @IsOptional()
+  @Field(() => ProjectUpdateManyWithoutTasksInput, {
+    nullable: true,
+  })
+  projects?: ProjectUpdateManyWithoutTasksInput;
 
   @ApiProperty({
     required: false,

@@ -13,10 +13,11 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { Type } from "class-transformer";
-import { IsOptional, IsEnum, ValidateNested } from "class-validator";
+import { IsOptional, ValidateNested, IsEnum } from "class-validator";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { ProjectListRelationFilter } from "../../project/base/ProjectListRelationFilter";
 import { EnumTaskStatus } from "./EnumTaskStatus";
 import { UserListRelationFilter } from "../../user/base/UserListRelationFilter";
 @InputType()
@@ -64,6 +65,18 @@ class TaskWhereInput {
     nullable: true,
   })
   name?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => ProjectListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => ProjectListRelationFilter)
+  @IsOptional()
+  @Field(() => ProjectListRelationFilter, {
+    nullable: true,
+  })
+  projects?: ProjectListRelationFilter;
 
   @ApiProperty({
     required: false,
