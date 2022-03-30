@@ -16,10 +16,11 @@ import {
   IsOptional,
   IsDate,
   IsString,
-  IsEnum,
   ValidateNested,
+  IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { Project } from "../../project/base/Project";
 import { EnumTaskStatus } from "./EnumTaskStatus";
 import { User } from "../../user/base/User";
 @ObjectType()
@@ -72,6 +73,15 @@ class Task {
     nullable: true,
   })
   name!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Project],
+  })
+  @ValidateNested()
+  @Type(() => Project)
+  @IsOptional()
+  projects?: Array<Project>;
 
   @ApiProperty({
     required: false,

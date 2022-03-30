@@ -16,10 +16,11 @@ import {
   IsOptional,
   IsDate,
   IsString,
-  IsEnum,
   ValidateNested,
+  IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { ProjectCreateNestedManyWithoutTasksInput } from "./ProjectCreateNestedManyWithoutTasksInput";
 import { EnumTaskStatus } from "./EnumTaskStatus";
 import { UserCreateNestedManyWithoutTasksInput } from "./UserCreateNestedManyWithoutTasksInput";
 @InputType()
@@ -56,6 +57,18 @@ class TaskCreateInput {
     nullable: true,
   })
   name?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => ProjectCreateNestedManyWithoutTasksInput,
+  })
+  @ValidateNested()
+  @Type(() => ProjectCreateNestedManyWithoutTasksInput)
+  @IsOptional()
+  @Field(() => ProjectCreateNestedManyWithoutTasksInput, {
+    nullable: true,
+  })
+  projects?: ProjectCreateNestedManyWithoutTasksInput;
 
   @ApiProperty({
     required: false,
