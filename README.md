@@ -1,12 +1,10 @@
 This project was generated with [Amplication](https://amplication.com)
 
-It consists of three packages:
+It consists of two packages:
 
 ### [Server](./server/README.md)
 
 ### [Admin UI](./admin-ui/README.md)
-
-### [Web](./web/README.md)
 
 ### Learn more
 
